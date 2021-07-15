@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { register } from "../Action/action";
 import { connect } from "react-redux";
+import ReCaptchaV2 from "react-google-recaptcha";
 import "./all.css";
 const Contactfrom = ({ register, history }) => {
+  const [isverified, setIsVerified] = useState([]);
   const [contactdata, setContactData] = useState({});
+
   const onChange = (e) =>
     setContactData({ ...contactdata, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
@@ -74,6 +77,7 @@ const Contactfrom = ({ register, history }) => {
             required
           />
         </div>
+        <ReCaptchaV2 sitekey="6LfSeZobAAAAADDuehOL2X31Qxg-Kvv4gQL2hkKu" />
         <button id="form" className="btn" type="submit">
           Submit
         </button>
